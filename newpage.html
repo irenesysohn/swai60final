@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Window Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cafeteria-layout {
+            display: flex;
+            flex-wrap: wrap;
+            width: 200px; /* 도면의 전체 너비 */
+            height: 390px;
+            border: 3px solid #000; /* 도면의 테두리 */
+            padding: 100px;
+            position: relative;
+            left: 600px;
+            top: 10px;
+            background-color: #f0f0f0;
+        }
+        /* 배식대 */ 
+        .rect {
+            width: 170px; /* 직사각형의 너비 */
+            height: 80px; /* 직사각형의 높이 */
+            background-color: #87CEEB; /* 직사각형의 배경 색상 (하늘색) */
+            position: relative; /* 위치를 상대적으로 설정 */
+            top: -10px; /* 상단으로 10px 이동 */
+            left: 120px; /* 좌측으로 100px 이동 */
+            display: flex; /* Flexbox 레이아웃 모드 활성화 */
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center; /* 세로 중앙 정렬 */
+            color: black; /* 텍스트 색상 */
+            font-size: 16px; /* 텍스트 크기 */
+        }
+        /* 식탁 */
+        .rect2{
+            width: 70px;
+            height: 350px;
+            background-color: bisque;
+            position: relative;
+            top: 20px;
+            left: -80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:black;
+            font-size: 16px;
+        }
+        svg{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+        }
+        /* 현재 접속자 수 표시 */
+        .visitor-count{
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            margin-top: 20px; /* 상단으로 20px 이동 */
+            margin-left: 350px;
+        }
+        /* 버튼 누르면 점 생성 */
+        .dot {
+            width: 20px;
+            height: 20px;
+            background-color: darkgreen;
+            opacity: 0.3;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+        }
+        /* 실제 줄 길이 표현 점 */
+        .origindot {
+            width: 20px;
+            height: 20px;
+            background-color: blueviolet;
+            opacity: 0.7;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+        }
+        /* 혼잡도 표시 */
+        .congestion-status{
+            position: relative;
+            top: -600px;
+            left: 100px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-left: 20px;   
+        }
+        /*대기 시간 표시 */
+        .waiting-time{
+            position: relative;
+            top: -600px;
+            left: 120px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: blue;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>급식실 현황</h1>
+    <div class="cafeteria-layout">
+        <svg>
+            <line x1="110" y1="110" x2="110" y2="550" stroke="red" stroke-width="2" />
+            <line x1="110" y1="550" x2="320" y2="550" stroke="red" stroke-width="2" />
+            <line x1="110" y1="110" x2="200" y2="110" stroke="red" stroke-width="2" />
+            <line x1="140" y1="140" x2="200" y2="140" stroke="red" stroke-width="2" />
+            <line x1="140" y1="140" x2="140" y2="520" stroke="red" stroke-width="2" />
+            <line x1="140" y1="520" x2="350" y2="520" stroke="red" stroke-width="2" />
+        </svg>
+        <div class="rect">배식대</div>
+        <div class="rect2">식탁</div> 
+    </div>
+    <svg>
+         <line x1="952" y1="618" x2="952" y2="740" stroke="red" stroke-width="2" />
+         <line x1="922" y1="648" x2="922" y2="710" stroke="red" stroke-width="2" /> 
+        <line x1="922" y1="710" x2="550" y2="710" stroke="red" stroke-width="2" />
+         <line x1="952" y1="740" x2="520" y2="740" stroke="red" stroke-width="2" />
+         <line x1="520" y1="740" x2="520" y2="210" stroke="red" stroke-width="2" />
+         <line x1="550" y1="710" x2="550" y2="210" stroke="red" stroke-width="2" />
+    </svg>
+    <p class="visitor-count"> 현재 접속자 수: <span id = 'visitorCount'>0</span></p>
+    <p class='congestion-status' id = "congestionStatus">혼잡도: 여유</p>
+    <p id ="waitingTime" class = "waiting-time">대기 시간: 0분</p>
+    <button class="button" onclick = "createDot()">내가 간다!</button>
+    <script src = "script2.js"></script>
+</body>
+</html>
